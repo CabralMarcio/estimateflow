@@ -1,0 +1,43 @@
+{% extends "orcamentos/base.html" %}
+{% block title %}EstimateFlow{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">EstimateFlow</h1>
+
+<div id="messages"></div>
+
+<table class="table table-striped align-middle">
+  <table class="table table-striped align-middle">
+      <thead>
+        <tr>
+          <th>Número</th>
+          <th>Status</th>
+          <th>Revisão</th>
+          <th>Ativo</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for o in orcamentos %}
+          <tr>
+            <td>
+              <a href="{% url 'orcamentos:grupo_detail' o.original.id %}">
+                {{ o.numero_orcamento|default:o.id }}
+              </a>
+            </td>
+            <td id="status-{{ o.id }}">{% include "orcamentos/partials/status_badge.html" with o=o %}</td>
+            <td>Rev{{ o.revisao }}</td>
+            <td>{% if o.is_ativo %}✅{% else %}—{% endif %}</td>
+            <td>
+              <div hx-get="{% url 'orcamentos:htmx_actions_panel' o.id %}"
+                   hx-trigger="load"
+                   hx-swap="outerHTML"></div>
+            </td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="5" class="text-muted">No estimates yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</table>
+{% endblock %}

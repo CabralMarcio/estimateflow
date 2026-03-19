@@ -1,0 +1,9 @@
+<span class="badge
+  {% if o.status == 'Aprovado' %} text-bg-success
+  {% elif o.status == 'Aguardando Aprovação' %} text-bg-warning
+  {% elif o.status == 'Cancelado' or o.status == 'Desativado' %} text-bg-danger
+  {% elif o.status == 'Concluído' %} text-bg-primary
+  {% else %} text-bg-secondary
+  {% endif %}">
+  {{ o.status }}
+</span>

@@ -1,0 +1,33 @@
+<div class="d-flex gap-2 flex-wrap">
+  <button class="btn btn-outline-primary btn-sm"
+          hx-post="{% url 'orcamentos:htmx_mudar_status' o.id %}"
+          hx-vals='{"status":"Aguardando Aprovação"}'
+          hx-target="#status-{{ o.id }}"
+          hx-swap="outerHTML">
+    Enviar p/ Aprovação
+  </button>
+
+  <button class="btn btn-success btn-sm"
+          hx-post="{% url 'orcamentos:htmx_mudar_status' o.id %}"
+          hx-vals='{"status":"Aprovado"}'
+          hx-target="#status-{{ o.id }}"
+          hx-swap="outerHTML">
+    Aprovar
+  </button>
+
+  <button class="btn btn-outline-secondary btn-sm"
+          hx-post="{% url 'orcamentos:htmx_criar_revisao' o.id %}"
+          hx-vals='{"manter_aprovacao":"0"}'
+          hx-target="#messages"
+          hx-swap="beforeend">
+    Criar Revisão
+  </button>
+
+  <button class="btn btn-outline-warning btn-sm"
+          hx-post="{% url 'orcamentos:htmx_criar_revisao' o.id %}"
+          hx-vals='{"manter_aprovacao":"1"}'
+          hx-target="#messages"
+          hx-swap="beforeend">
+    Revisão Pós Aprovação
+  </button>
+</div>
