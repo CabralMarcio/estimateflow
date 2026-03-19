@@ -37,6 +37,17 @@ This repo includes a seed command that creates realistic scenarios:
 
 ## Run locally
 
+## Screenshots
+
+### List view
+![List](docs/list.png)
+
+### Group detail (revisions)
+![Group](docs/group.png)
+
+### HTMX demo (no page reload)
+![HTMX Demo](docs/htmx-demo.gif)
+
 ### 1) Create virtualenv + install deps
 ```bash
 python3 -m venv .venv
