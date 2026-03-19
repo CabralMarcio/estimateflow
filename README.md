@@ -43,3 +43,23 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -U pip
 pip install django django-filter pytest pytest-django factory-boy
+
+2) Migrate + seed + run
+
+cd src
+python manage.py migrate
+python manage.py seed_demo
+python manage.py runserver 0.0.0.0:8000
+
+Open: http://localhost:8000/
+
+Login:
+
+user: demo
+pass: demo1234
+
+Tests
+
+python -m pytest -q
+
+
